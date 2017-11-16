@@ -12,8 +12,12 @@ import java.io.Serializable;
 @Component
 public class CountryLanguageIdConverter implements BackendIdConverter {
 
-    @Autowired
     private CountryLanguageRepository repository;
+
+    @Autowired
+    public CountryLanguageIdConverter(CountryLanguageRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public Serializable fromRequestId(String id, Class<?> entityType) {
