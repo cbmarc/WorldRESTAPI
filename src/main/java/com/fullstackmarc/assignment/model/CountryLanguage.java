@@ -1,15 +1,16 @@
 package com.fullstackmarc.assignment.model;
 
+import com.fullstackmarc.assignment.converters.TrueFalseEnumConverter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 public class CountryLanguage implements Serializable {
     private CountryLanguagePK id;
-    private String countryCode;
-    private String language;
     private Double percentage;
     private Country country;
+    private TrueFalseEnum isOfficial;
 
     @EmbeddedId
     public CountryLanguagePK getId() {
@@ -18,36 +19,27 @@ public class CountryLanguage implements Serializable {
 
     public void setId(CountryLanguagePK id) {
         this.id = id;
-        this.countryCode = id.getCountryCode();
-        this.language = id.getLanguage();
-    }
-
-    @Column(name = "CountryCode", insertable = false, updatable = false)
-    public String getCountryCode() {
-        return countryCode;
-    }
-
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
-    }
-
-    @Column(name = "Language", insertable = false, updatable = false)
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
     }
 
     @Basic
-    @Column(name = "Percentage")
+    @Column(name = "Percentage", nullable = false)
     public Double getPercentage() {
         return percentage;
     }
 
     public void setPercentage(Double percentage) {
         this.percentage = percentage;
+    }
+
+    @Basic
+    @Column(name = "IsOfficial")
+    @Convert(converter = TrueFalseEnumConverter.class)
+    public TrueFalseEnum getIsOfficial() {
+        return isOfficial;
+    }
+
+    public void setIsOfficial(TrueFalseEnum isOfficial) {
+        this.isOfficial = isOfficial;
     }
 
     @Override
@@ -57,18 +49,16 @@ public class CountryLanguage implements Serializable {
 
         CountryLanguage that = (CountryLanguage) o;
 
-        if (!id.equals(that.id)) return false;
-        if (!countryCode.equals(that.countryCode)) return false;
-        if (!language.equals(that.language)) return false;
-        if (!percentage.equals(that.percentage)) return false;
-        return country.equals(that.country);
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (percentage != null ? !percentage.equals(that.percentage) : that.percentage != null) return false;
+        return country != null ? country.equals(that.country) : that.country == null;
     }
 
     @Override
     public int hashCode() {
-        int result = countryCode != null ? countryCode.hashCode() : 0;
-        result = 31 * result + (language != null ? language.hashCode() : 0);
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (percentage != null ? percentage.hashCode() : 0);
+        result = 31 * result + (country != null ? country.hashCode() : 0);
         return result;
     }
 
@@ -80,5 +70,10 @@ public class CountryLanguage implements Serializable {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public CountryLanguage() {
+        this.isOfficial = TrueFalseEnum.FALSE;
+        this.percentage = 0.0;
     }
 }

@@ -1,7 +1,6 @@
 package com.fullstackmarc.assignment.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fullstackmarc.assignment.model.Country;
 import com.fullstackmarc.assignment.model.CountryLanguage;
 import com.fullstackmarc.assignment.model.EntityTestUtils;
 import org.junit.Test;
@@ -14,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_CLASS;
-import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -44,8 +42,8 @@ public class CountryLanguageTest {
 
         mockMvc.perform(get(URLConstants.COUNTRY_LANGUAGES + "/" + lang.getId())).andDo(print()).
                 andExpect(status().isOk())
-                .andExpect(jsonPath("$.countryCode").exists())
-                .andExpect(jsonPath("$.countryCode").value(lang.getCountryCode()));
+                .andExpect(jsonPath("$.id.countryCode").exists())
+                .andExpect(jsonPath("$.id.countryCode").value(lang.getId().getCountryCode()));
     }
 
     @Test
