@@ -18,6 +18,8 @@ public class CountryLanguage implements Serializable {
 
     public void setId(CountryLanguagePK id) {
         this.id = id;
+        this.countryCode = id.getCountryCode();
+        this.language = id.getLanguage();
     }
 
     @Column(name = "CountryCode", insertable = false, updatable = false)

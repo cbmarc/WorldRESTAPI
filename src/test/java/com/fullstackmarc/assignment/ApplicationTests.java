@@ -23,7 +23,6 @@ public class ApplicationTests {
 
     @Test
     public void shouldReturnRepositoryIndex() throws Exception {
-
         mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk()).andExpect(
                 jsonPath("$._links.profile").exists());
     }
