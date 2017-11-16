@@ -1,6 +1,7 @@
 package com.fullstackmarc.assignment.repositories;
 
 import com.fullstackmarc.assignment.model.City;
+import com.fullstackmarc.assignment.model.EntityTestUtils;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,7 +24,7 @@ public class CityRepositoryTest extends AbstractCrudRepositoryTest<City, CityRep
 
     @Before
     public void setUp() throws Exception {
-        this.city = RepositoryTestUtils.getCity();
+        this.city = EntityTestUtils.getCity();
         this.entityManager.persist(city.getCountry());
     }
 }

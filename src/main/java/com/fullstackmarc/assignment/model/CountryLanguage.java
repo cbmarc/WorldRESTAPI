@@ -1,17 +1,26 @@
 package com.fullstackmarc.assignment.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@IdClass(CountrylanguagePK.class)
-public class CountryLanguage {
+public class CountryLanguage implements Serializable {
+    private CountryLanguagePK id;
     private String countryCode;
     private String language;
     private Double percentage;
     private Country country;
 
-    @Id
-    @Column(name = "CountryCode")
+    @EmbeddedId
+    public CountryLanguagePK getId() {
+        return id;
+    }
+
+    public void setId(CountryLanguagePK id) {
+        this.id = id;
+    }
+
+    @Column(name = "CountryCode", insertable = false, updatable = false)
     public String getCountryCode() {
         return countryCode;
     }
@@ -20,8 +29,7 @@ public class CountryLanguage {
         this.countryCode = countryCode;
     }
 
-    @Id
-    @Column(name = "Language")
+    @Column(name = "Language", insertable = false, updatable = false)
     public String getLanguage() {
         return language;
     }
@@ -47,11 +55,11 @@ public class CountryLanguage {
 
         CountryLanguage that = (CountryLanguage) o;
 
-        if (countryCode != null ? !countryCode.equals(that.getCountryCode()) : that.getCountryCode() != null) return false;
-        if (language != null ? !language.equals(that.getLanguage()) : that.getLanguage() != null) return false;
-        if (percentage != null ? !percentage.equals(that.getPercentage()) : that.getPercentage() != null) return false;
-
-        return true;
+        if (!id.equals(that.id)) return false;
+        if (!countryCode.equals(that.countryCode)) return false;
+        if (!language.equals(that.language)) return false;
+        if (!percentage.equals(that.percentage)) return false;
+        return country.equals(that.country);
     }
 
     @Override

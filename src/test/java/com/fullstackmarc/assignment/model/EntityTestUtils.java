@@ -1,13 +1,10 @@
-package com.fullstackmarc.assignment.repositories;
+package com.fullstackmarc.assignment.model;
 
-import com.fullstackmarc.assignment.model.City;
-import com.fullstackmarc.assignment.model.Continent;
-import com.fullstackmarc.assignment.model.Country;
-import com.fullstackmarc.assignment.model.CountryLanguage;
+import com.fullstackmarc.assignment.model.*;
 
-public class RepositoryTestUtils {
+public class EntityTestUtils {
 
-     static Country getCountry() {
+    public static Country getCountry() {
         Country country = new Country();
         country.setCode("JPN");
         country.setName("Japan");
@@ -27,7 +24,7 @@ public class RepositoryTestUtils {
         return country;
     }
 
-    static City getCity() {
+    public static City getCity() {
         City city = new City();
         city.setId(1594);
         city.setName("Akita");
@@ -37,12 +34,12 @@ public class RepositoryTestUtils {
         return city;
     }
 
-    static CountryLanguage getCountryLanguage() {
-         CountryLanguage lang = new CountryLanguage();
-         lang.setCountry(getCountry());
-         lang.setCountryCode(lang.getCountry().getCode());
-         lang.setLanguage("Japanese");
-         lang.setPercentage(99.1);
-         return lang;
+    public static CountryLanguage getCountryLanguage() {
+        CountryLanguage lang = new CountryLanguage();
+        Country country = getCountry();
+        lang.setCountry(getCountry());
+        lang.setId(new CountryLanguagePK(country.getCode(), "Japanese"));
+        lang.setPercentage(99.1);
+        return lang;
     }
 }

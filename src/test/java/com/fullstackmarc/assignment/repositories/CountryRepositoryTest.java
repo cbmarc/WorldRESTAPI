@@ -1,6 +1,7 @@
 package com.fullstackmarc.assignment.repositories;
 
 import com.fullstackmarc.assignment.model.Country;
+import com.fullstackmarc.assignment.model.EntityTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class CountryRepositoryTest extends AbstractCrudRepositoryTest<Country, CountryRepository> {
@@ -10,7 +11,7 @@ public class CountryRepositoryTest extends AbstractCrudRepositoryTest<Country, C
 
     @Override
     protected Country getEntity() {
-        return RepositoryTestUtils.getCountry();
+        return EntityTestUtils.getCountry();
     }
 
     @Override

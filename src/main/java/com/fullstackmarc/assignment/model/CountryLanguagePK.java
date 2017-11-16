@@ -1,15 +1,30 @@
 package com.fullstackmarc.assignment.model;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-public class CountrylanguagePK implements Serializable {
+@Embeddable
+public class CountryLanguagePK implements Serializable {
     private String countryCode;
     private String language;
 
+    public static CountryLanguagePK fromString(String s) {
+        String[] ids = s.split("-");
+        return new CountryLanguagePK(ids[0], ids[1]);
+    }
+
+    public CountryLanguagePK() {
+    }
+
+    public CountryLanguagePK(String countryCode, String language) {
+        this.countryCode = countryCode;
+        this.language = language;
+    }
+
     @Column(name = "CountryCode")
-    @Id
     public String getCountryCode() {
         return countryCode;
     }
@@ -19,7 +34,6 @@ public class CountrylanguagePK implements Serializable {
     }
 
     @Column(name = "Language")
-    @Id
     public String getLanguage() {
         return language;
     }
@@ -29,11 +43,16 @@ public class CountrylanguagePK implements Serializable {
     }
 
     @Override
+    public String toString() {
+        return countryCode + "-" + language;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CountrylanguagePK that = (CountrylanguagePK) o;
+        CountryLanguagePK that = (CountryLanguagePK) o;
 
         if (countryCode != null ? !countryCode.equals(that.countryCode) : that.countryCode != null) return false;
         if (language != null ? !language.equals(that.language) : that.language != null) return false;

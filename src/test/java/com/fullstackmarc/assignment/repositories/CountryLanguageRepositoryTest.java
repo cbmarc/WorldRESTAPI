@@ -1,6 +1,7 @@
 package com.fullstackmarc.assignment.repositories;
 
 import com.fullstackmarc.assignment.model.CountryLanguage;
+import com.fullstackmarc.assignment.model.EntityTestUtils;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -23,7 +24,7 @@ public class CountryLanguageRepositoryTest extends AbstractCrudRepositoryTest<Co
 
     @Before
     public void setUp() throws Exception {
-        this.countryLanguage = RepositoryTestUtils.getCountryLanguage();
+        this.countryLanguage = EntityTestUtils.getCountryLanguage();
         this.entityManager.persist(countryLanguage.getCountry());
     }
 }
