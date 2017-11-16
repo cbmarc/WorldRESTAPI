@@ -32,7 +32,6 @@ public class Country {
         this.code = code;
     }
 
-    @Basic
     @Column(name = "Name")
     public String getName() {
         return name;
@@ -42,7 +41,6 @@ public class Country {
         this.name = name;
     }
 
-    @Basic
     @Column(name = "Continent")
     @Convert(converter = ContinentConverter.class)
     public Continent getContinent() {
@@ -53,7 +51,6 @@ public class Country {
         this.continent = continent;
     }
 
-    @Basic
     @Column(name = "Region")
     public String getRegion() {
         return region;
@@ -63,7 +60,6 @@ public class Country {
         this.region = region;
     }
 
-    @Basic
     @Column(name = "SurfaceArea")
     public Double getSurfaceArea() {
         return surfaceArea;
@@ -73,7 +69,6 @@ public class Country {
         this.surfaceArea = surfaceArea;
     }
 
-    @Basic
     @Column(name = "IndepYear")
     public Integer getIndepYear() {
         return indepYear;
@@ -83,7 +78,6 @@ public class Country {
         this.indepYear = indepYear;
     }
 
-    @Basic
     @Column(name = "Population")
     public Integer getPopulation() {
         return population;
@@ -93,7 +87,6 @@ public class Country {
         this.population = population;
     }
 
-    @Basic
     @Column(name = "LifeExpectancy")
     public Double getLifeExpectancy() {
         return lifeExpectancy;
@@ -103,7 +96,6 @@ public class Country {
         this.lifeExpectancy = lifeExpectancy;
     }
 
-    @Basic
     @Column(name = "GNP")
     public Double getGnp() {
         return gnp;
@@ -113,7 +105,6 @@ public class Country {
         this.gnp = gnp;
     }
 
-    @Basic
     @Column(name = "GNPOld")
     public Double getGnpOld() {
         return gnpOld;
@@ -123,7 +114,6 @@ public class Country {
         this.gnpOld = gnpOld;
     }
 
-    @Basic
     @Column(name = "LocalName")
     public String getLocalName() {
         return localName;
@@ -133,7 +123,6 @@ public class Country {
         this.localName = localName;
     }
 
-    @Basic
     @Column(name = "GovernmentForm")
     public String getGovernmentForm() {
         return governmentForm;
@@ -143,7 +132,7 @@ public class Country {
         this.governmentForm = governmentForm;
     }
 
-    @Basic
+
     @Column(name = "HeadOfState")
     public String getHeadOfState() {
         return headOfState;
@@ -153,7 +142,7 @@ public class Country {
         this.headOfState = headOfState;
     }
 
-    @Basic
+
     @Column(name = "Capital")
     public Integer getCapital() {
         return capital;
@@ -163,7 +152,7 @@ public class Country {
         this.capital = capital;
     }
 
-    @Basic
+
     @Column(name = "Code2")
     public String getCode2() {
         return code2;
