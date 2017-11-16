@@ -7,6 +7,7 @@ public class City {
     private Integer id;
     private String name;
     private Country country;
+    private String countryCode;
     private String district;
     private Integer population;
 
@@ -30,8 +31,18 @@ public class City {
         this.name = name;
     }
 
+    @Basic
+    @Column(name = "CountryCode")
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
     @ManyToOne
-    @JoinColumn(name = "CountryCode", referencedColumnName = "Code", nullable = false)
+    @JoinColumn(name = "CountryCode", referencedColumnName = "Code", insertable = false, updatable = false)
     public Country getCountry() {
         return country;
     }

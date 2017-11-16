@@ -1,7 +1,5 @@
 package com.fullstackmarc.assignment.model;
 
-import com.fullstackmarc.assignment.model.*;
-
 public class EntityTestUtils {
 
     public static Country getCountry() {
