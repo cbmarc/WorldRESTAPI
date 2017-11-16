@@ -3,6 +3,7 @@ package com.fullstackmarc.assignment.repositories;
 import com.fullstackmarc.assignment.model.City;
 import com.fullstackmarc.assignment.model.Continent;
 import com.fullstackmarc.assignment.model.Country;
+import com.fullstackmarc.assignment.model.CountryLanguage;
 
 public class RepositoryTestUtils {
 
@@ -34,5 +35,14 @@ public class RepositoryTestUtils {
         city.setDistrict("Akita");
         city.setPopulation(314440);
         return city;
+    }
+
+    static CountryLanguage getCountryLanguage() {
+         CountryLanguage lang = new CountryLanguage();
+         lang.setCountry(getCountry());
+         lang.setCountryCode(lang.getCountry().getCode());
+         lang.setLanguage("Japanese");
+         lang.setPercentage(99.1);
+         return lang;
     }
 }

@@ -45,7 +45,7 @@ public class CountryLanguage {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CountrylanguageEntity that = (CountrylanguageEntity) o;
+        CountryLanguage that = (CountryLanguage) o;
 
         if (countryCode != null ? !countryCode.equals(that.getCountryCode()) : that.getCountryCode() != null) return false;
         if (language != null ? !language.equals(that.getLanguage()) : that.getLanguage() != null) return false;
@@ -63,7 +63,7 @@ public class CountryLanguage {
     }
 
     @ManyToOne
-    @JoinColumn(name = "CountryCode", referencedColumnName = "Code", nullable = false)
+    @JoinColumn(name = "CountryCode", referencedColumnName = "Code", nullable = false, insertable = false, updatable = false)
     public Country getCountry() {
         return country;
     }
